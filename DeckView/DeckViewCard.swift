@@ -54,19 +54,22 @@ class DeckViewCard: UIView {
             
             }) { (completed) in
                 
-                
+                UIView.animateWithDuration(0.3, animations: { 
+                    
+                    let animation = CABasicAnimation(keyPath: "cornerRadius")
+                    animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+                    animation.fromValue = self.vwSmallImage.layer.cornerRadius
+                    animation.toValue = 0
+                    animation.duration = 1
+                    animation.cumulative = true
+                    self.vwSmallImage.layer.addAnimation(animation, forKey: "cornerRadius")
+                    self.vwSmallImage.layer.cornerRadius = 0
+
+                })
 
         }
         
-        let animation = CABasicAnimation(keyPath: "cornerRadius")
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        animation.fromValue = self.vwSmallImage.layer.cornerRadius
-        animation.toValue = 0
-        animation.duration = 1
-        animation.cumulative = true
-        self.vwSmallImage.layer.addAnimation(animation, forKey: "cornerRadius")
-        self.vwSmallImage.layer.cornerRadius = 0
-
+        
         
         UIView.animateWithDuration(1, delay: 1, options: UIViewAnimationOptions.AllowAnimatedContent, animations: {
             
